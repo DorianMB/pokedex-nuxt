@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col items-center mx-20">
     <Logo/>
-    <div class="pokedex w-full h-64 rounded-2xl flex flex-col justify-center items-center">
-      <p>Choisissez votre starter</p>
+    <div class="pokedex w-full rounded-2xl flex flex-col justify-center items-center py-6">
+      <p class="mb-6">Choisissez votre starter</p>
       <div class="flex justify-center items-center">
         <div v-for="(pokemon,index) in pokemons" :key="index" class="mx-8 flex flex-col items-center">
           <img :src="pokemon.sprites.front_default">
@@ -10,8 +10,8 @@
         </div>
       </div>
     </div>
-    <router-link to="pokemon-list" tag="button" class="bg-red-100 mt-5 rounded-full py-3 px-6 shadow flex justify-center items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 mr-3">
+    <router-link to="pokemon-list" tag="button" class="bg-white text-primary mt-5 rounded-full py-3 px-6 shadow flex justify-center items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 mr-2">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
       </svg>
       <span>Go to list</span>
@@ -42,7 +42,6 @@ export default Vue.extend({
   },
   methods: {
     getPokemon(pokemon: any) {
-      console.log(pokemon, 'abcd');
       return pokemon.name;
     }
   }

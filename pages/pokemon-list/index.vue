@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "pokemon-list",
+  name: "index.vue",
   data(){
     return {
       pokemons: []
@@ -31,3 +31,4 @@ export default {
 <style scoped>
 
 </style>
+
