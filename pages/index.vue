@@ -4,9 +4,8 @@
     <div class="pokedex w-full rounded-2xl flex flex-col justify-center items-center py-6">
       <p class="mb-6">Choisissez votre starter</p>
       <div class="flex justify-center items-center">
-        <div v-for="(pokemon,index) in pokemons" :key="index" class="mx-8 flex flex-col items-center">
-          <img :src="pokemon.sprites.front_default">
-          <span>{{getPokemon(pokemon)}}</span>
+        <div v-for="(pokemon,index) in pokemons" :key="index" class="mx-8">
+          <pokemon-card :pokemon="pokemon"></pokemon-card>
         </div>
       </div>
     </div>
@@ -19,10 +18,12 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
+import PokemonCard from "~/components/PokemonCard.vue";
 
 export default Vue.extend({
+  components: {PokemonCard},
   data() {
     return {
       pokemons: [null]
@@ -39,11 +40,6 @@ export default Vue.extend({
     this.$axios.$get('https://pokeapi.co/api/v2/pokemon/charmander').then(res => {
       this.pokemons.push(res);
     });
-  },
-  methods: {
-    getPokemon(pokemon: any) {
-      return pokemon.name;
-    }
   }
 })
 </script>

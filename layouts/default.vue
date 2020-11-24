@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen bg-gradient-to-br from-primary to-secondary">
+  <div class="min-h-screen bg-gradient-to-br from-primary to-secondary">
     <Nuxt />
   </div>
 </template>
