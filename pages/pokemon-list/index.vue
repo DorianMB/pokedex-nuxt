@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     async getPokemon() {
-      this.$axios.$get('https://pokeapi.co/api/v2/pokemon?limit=60').then(res => {
+      this.$axios.$get('https://pokeapi.co/api/v2/pokemon?limit=120').then(res => {
         this.pokemons = res['results'];
       })
     },

@@ -28,9 +28,6 @@ export default {
     }
   },
   methods: {
-      console(item) {
-        console.log('abcd', typeof item);
-      },
       pokemonNumber(id) {
         if (id)  {
           let res = id.toString();
@@ -48,10 +45,6 @@ export default {
 </script>
 
 <style lang="scss">
-  .pokedex {
-    background-color: white;
-    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.6);
-  }
   .pokemon-card {
     img {
       background-image: url("../assets/images/pokeball-bg.png");
