@@ -1,18 +1,28 @@
 <template>
-  <p>TG</p>
+  <div>
+    <pokemon-card
+      v-for="(pokemon, index) in pokemons"
+      :key="index"
+      :pokemon="pokemon"
+    />
+  </div>
 </template>
 
 <script>
 export default {
   name: "pokemon-list",
+  data(){
+    return {
+      pokemons: []
+    }
+  },
   mounted() {
     this.getPokemon();
   },
   methods: {
     async getPokemon() {
-      const ip = await this.$axios.$get('http://icanhazip.com');
-      console.log(ip, 'abcd');
-      return { ip }
+      const res = await this.$axios.$get('https://pokeapi.co/api/v2/pokemon?limit=60')
+      this.pokemons = res['results']
     }
   }
 }
