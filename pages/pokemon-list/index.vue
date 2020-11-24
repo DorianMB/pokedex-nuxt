@@ -35,7 +35,10 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+  .pokedex {
+    background-color: white;
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.6);
+  }
 </style>
 

@@ -93,7 +93,7 @@ export default {
     img {
       background-image: url("../../assets/images/pokeball-bg.png");
       background-repeat: no-repeat;
-      background-size: 12rem;
+      background-size: 16rem;
       background-position: center;
     }
 
