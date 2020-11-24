@@ -1,12 +1,15 @@
 <template>
-  <div>
+  <div class="h-screen bg-gradient-to-br from-primary to-secondary">
     <Nuxt />
   </div>
 </template>
 
-<style>
+<style lang="scss">
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 html {
   font-family:
+    'Roboto',
     'Source Sans Pro',
     -apple-system,
     BlinkMacSystemFont,
@@ -22,7 +25,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-  background-color: #C20E23;
 }
 
 *,
