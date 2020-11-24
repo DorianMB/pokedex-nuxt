@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
+  <div class="flex flex-col items-center">
+    <Logo />
+    <div class="pokedex w-full h-64 rounded">
     </div>
   </div>
 </template>
@@ -9,45 +9,24 @@
 <script lang="ts">
 import Vue from 'vue'
 
-export default Vue.extend({})
+export default Vue.extend({
+  beforeMount(): void {
+    //this.asyncData();
+  },
+  methods: {
+    async asyncData() {
+      const ip = await this.$axios.$get('http://icanhazip.com');
+      console.log(ip, 'abcd');
+      return { ip }
+    }
+  }
+})
 </script>
 
 <style lang="scss">
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+  .pokedex {
+    background-color: white;
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.6);
+    margin: 1rem 5rem;
+  }
 </style>
