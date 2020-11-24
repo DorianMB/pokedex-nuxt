@@ -17,10 +17,10 @@ export default {
     }
   },
   mounted() {
-    this.getPokemon();
+    this.getPokemonList();
   },
   methods: {
-    async getPokemon() {
+    async getPokemonList() {
       const res = await this.$axios.$get('https://pokeapi.co/api/v2/pokemon?limit=60')
       this.pokemons = res['results']
     }
