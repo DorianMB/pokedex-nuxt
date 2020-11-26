@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     async getPokemon() {
-      this.$axios.$get('https://pokeapi.co/api/v2/pokemon?limit=120').then(res => {
+      this.$axios.$get('https://pokeapi.co/api/v2/pokemon?limit=151').then(res => {
         this.pokemons = res['results'];
       })
     },
@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss"  scoped>
   .pokedex {
     background-color: white;
     box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.6);

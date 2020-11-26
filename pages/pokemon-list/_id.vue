@@ -1,11 +1,12 @@
 <template>
-  <div class="px-6 flex items-center min-h-screen">
+  <div class="px-6 flex flex-col items-center min-h-screen">
+    <Logo/>
     <div class="pokedex w-full rounded-2xl flex items-center p-6" v-if="pokemon.id">
       <div class="rounded-xl w-2/6 flex flex-col items-center pokemon-card shadow">
         <div class="w-full bg-black text-white px-4 py-1 pokemon-header flex justify-between">
           <div class="flex items-center">
             <img src="../../assets/images/pokeball.png" class="w-10 mr-2">
-            <span>N°{{pokemonNumber(pokemon.id)}}</span>
+            <span>N°{{pokemonNumber}}</span>
           </div>
           <span>{{pokemon.name | capitalize}}</span>
         </div>
@@ -33,12 +34,21 @@
       </div>
 
     </div>
+    <router-link to="/pokemon-list" tag="button" class="bg-white text-primary mt-5 rounded-full py-3 px-6 shadow flex justify-center items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 mr-2">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+      </svg>
+      <span>Go to list</span>
+    </router-link>
   </div>
 </template>
 
 <script>
+import PokemonCard from "../../components/PokemonCard";
+
 export default {
   name: "pokemon_id",
+  components: {PokemonCard},
   async asyncData({params}) {
     const id = params.id;
     return {id}
@@ -48,7 +58,20 @@ export default {
       pokemon: []
     }
   },
-  mounted() {
+  computed:{
+    pokemonNumber() {
+      if (this.pokemon.id) {
+        let res = this.pokemon.id.toString();
+        while (res.length < 4) {
+          res = '0' + res;
+        }
+        return res;
+      } else {
+        return '';
+      }
+    }
+  },
+  beforeMount() {
     this.getPokemon();
   },
   methods: {
@@ -61,17 +84,6 @@ export default {
         this.pokemon.types = res.types.map(p => p.type.name);
       });
     },
-    pokemonNumber(id) {
-      if (id) {
-        let res = id.toString();
-        while (res.length < 4) {
-          res = '0' + res;
-        }
-        return res;
-      } else {
-        return '';
-      }
-    }
   },
   filters: {
     capitalize: function (value) {
@@ -83,7 +95,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   .pokedex {
     background-color: white;
     box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.6);
