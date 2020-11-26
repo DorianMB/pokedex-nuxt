@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   theme: {
@@ -6,28 +6,22 @@ module.exports = {
       colors: {
         primary: '#a5222b',
         secondary: '#f33644',
-        poison: '#A33EA1',
-        normal: '#A8A77A',
-        fighting: '#C22E28',
-        flying: '#A98FF3',
-        poison: '#A33EA1',
-        ground: '#E2BF65',
-        rock: '#B6A136',
-        bug: '#A6B91A',
-        ghost: '#735797',
-        steel: 'B7B7CE',
-        fire: '#EE8130',
-        water: '#6390F0',
-        grass: '#7AC74C',
-        electric: '#F7D02C',
-        psychic: '#F95587',
-        ice: '#96D9D6',
-        dragon: '#6F35FC',
-        dark: '#705746',
-        fairy: '#D685AD',
-        unknown: 'azure',
-        shadow: 'grey'
       }
     }
+  },
+  variants: {},
+  plugins: [],
+  purge: {
+    enabled: true,
+    content: [
+      'components/**/*.vue',
+      'layouts/**/*.vue',
+      'pages/**/*.vue',
+      'plugins/**/*.js',
+      'nuxt.config.js',
+      // TypeScript
+      'plugins/**/*.ts',
+      'nuxt.config.ts'
+    ]
   }
 }

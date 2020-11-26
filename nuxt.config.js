@@ -43,6 +43,12 @@ export default {
     // proxy: true
   },
 
+  tailwindcss: {
+    configPath: 'tailwind.config.js',
+    exposeConfig: true,
+    config: {}
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
   }

@@ -16,7 +16,7 @@ export default {
   props: ['pokemon'],
   data() {
     return {
-      pokemonData: {}
+      pokemonData: {},
     }
   },
   computed:{
@@ -40,7 +40,7 @@ export default {
     } else {
       this.pokemonData = this.pokemon;
     }
-  },
+  }
 }
 
 </script>
