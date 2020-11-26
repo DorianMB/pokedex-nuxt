@@ -23,6 +23,7 @@
             :key="index"
             :type-data="type"
             class="badge rounded mx-1 px-3"
+            :class="'bg-'+type"
           >
             {{ type }}
           </span>
@@ -31,6 +32,16 @@
         <div class="w-1/2">{{ pokemon.height }} m </div>
         <div class="w-1/2">Poids</div>
         <div class="w-1/2">{{ pokemon.weight }} kg </div>
+        <template v-for="(stat, index) in pokemon.stats"
+          :stat-data="stat"
+        >
+          <div class="w-1/2"> {{ stat.stat.name | capitalize }} </div>
+          <div class="w-1/2"> 
+            <div class="stat-bar">
+              <div class="value text-white flex justify-center" :style="statStyle(stat)">{{stat.base_stat}}</div>
+            </div>
+          </div>
+        </template>
       </div>
 
     </div>
@@ -55,7 +66,15 @@ export default {
   },
   data() {
     return {
-      pokemon: []
+      pokemon: [],
+      maxStats: {
+        maxhp: 255,
+        maxattack: 190,
+        maxdefense: 230,
+        maxspecialattack: 194,
+        maxspecialdefense: 230,
+        maxspeed: 180
+      }
     }
   },
   computed:{
@@ -77,13 +96,19 @@ export default {
   methods: {
     async getPokemon() {
       this.$axios.$get('https://pokeapi.co/api/v2/pokemon/' + this.id).then(res => {
-        console.log('abcd', res);
         this.pokemon = res;
         this.pokemon.weight = res.weight / 10;
         this.pokemon.height = res.height / 10;
         this.pokemon.types = res.types.map(p => p.type.name);
       });
     },
+    statStyle(stat) {
+      let getStatName = 'max'+stat.stat.name.replace('-','')
+      const barStatWidht = (stat.base_stat / this.maxStats[getStatName]) * 100
+      return {
+            width: barStatWidht + '%'
+        }
+      }
   },
   filters: {
     capitalize: function (value) {
@@ -131,4 +156,21 @@ export default {
       }
     }
   }
+
+.stat-bar {
+  	background-color: white;
+		height: 20px!important;
+		width: 100%;
+		border-radius: 20px;
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+.stat-bar .value {
+  background-color: rgba(27, 94, 171, 0.85);
+  height: 100%;
+  text-align: center;
+  font-weight: initial;
+  font-size: 10px;
+  border-radius: 20px 2px 2px 20px;
+}
 </style>
